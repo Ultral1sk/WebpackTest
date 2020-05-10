@@ -1,26 +1,44 @@
-var showSecret = false;
+const numberOneInput = document.getElementById("numberOne");
+const numberTwoInput = document.getElementById("numberTwo");
+const addValuesButton = document.getElementById("addValues");
+const resultDiv = document.getElementById("result");
+const errorBox = document.getElementById("error");
 
-secretButton.addEventListener('click', toggleSecretState);
-updateSecretParagraph();
+const parseInputs = (...input) => {
+  return input.map(str => parseInt(str));
+};
 
-function toggleSecretState() {
-    showSecret = !showSecret;
-    updateSecretParagraph();
-    updateSecretButton()
-}
+const inputsAreValid = (...input) => {
+  return input.every(num => typeof num === "number" && !isNaN(num));
+};
 
-function updateSecretButton() {
-    if (showSecret) {
-        secretButton.textContent = 'Hide the Secret';
+const handleAdditionError = (inputs, numbers) => {
+  const fullMessage = inputs.reduce((message, str, index) => {
+    if (inputsAreValid(numbers[index])) {
+      return message + "";
     } else {
-        secretButton.textContent = 'Show the Secret';
+      return message + `${str} is not a number. `;
     }
-}
+  }, "Please enter two valid numbers! ");
 
-function updateSecretParagraph() {
-    if (showSecret) {
-        secretParagraph.style.display = 'block';
-    } else {
-        secretParagraph.style.display = 'none';
-    }
-}
+  errorBox.classList.remove("invisible");
+  errorBox.innerText = fullMessage;
+};
+
+const hideErrors = () => {
+  errorBox.classList.add("invisible");
+};
+
+hideErrors();
+addValuesButton.addEventListener("click", () => {
+  hideErrors();
+  const inputs = [numberOneInput.value, numberTwoInput.value];
+  const parsedInputs = parseInputs(...inputs);
+  if (inputsAreValid(...parsedInputs)) {
+    const [numA, numB] = parsedInputs;
+    resultDiv.innerText = numA + numB;
+  } else {
+    resultDiv.innerText = "";
+    handleAdditionError(inputs, parsedInputs);
+  }
+});
