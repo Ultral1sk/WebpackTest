@@ -6,3 +6,6 @@ we start inside the "script" with the following :
 
 - since now we gave webpack a clue which file to run when it s starting the next step is also tell webpack ON which dependency does this file run (or which depencency does this file use)
 Then it'll start to run and will try to understand which imports exports files does this file use, then it'll merge that code into a one bundle 
+
+
+2 - Right now the code is spreaded out but where tha appstarts is in app.js with the run function
