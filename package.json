@@ -4,7 +4,7 @@
   "description": "This repository holds the source code of my Webpack 2 Basics Series on YouTube. Make sure to watch the Videos on YouTube to understand how to use that code.",
   "main": "index.js",
   "scripts": {
-    "start" : "webpack"
+    "start": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/Ultral1sk/WebpackTest#readme",
   "devDependencies": {
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^7.0.3",
     "webpac": "0.0.1-security",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
