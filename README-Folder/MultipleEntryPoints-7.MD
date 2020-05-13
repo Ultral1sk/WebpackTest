@@ -1,5 +1,5 @@
 //**** Multiple entry points ****//
-creating an new entry example : vendor.js inside this vendor will be the bootstrap library imported so we can use it later on same as css in order to use it we need to import it!
+creating an new entry example : vendor.js inside this vendor will be the bootstrap library imported so we can use it later on same as css in order to use it we need to import it!-=
 import "bootstrap"
 
 if we want our code to be splitted and make our entry points dynamic
